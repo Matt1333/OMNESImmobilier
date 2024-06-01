@@ -7,24 +7,44 @@
    
     <link rel="stylesheet" href="stylesTout_parcourir.css">
     <link rel="stylesheet" href="styles_detail.css">
+    <style>
+        .felicitations {
+            font-size: 24px;
+            background-color: yellow;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <img src="uploads/logo.png" alt="Logo Omnes Immobilier">
     </header>
     <nav>
-        <button onclick="location.href='accueil.html'">Accueil</button>
-        <button onclick="location.href='index.php'">Tout Parcourir</button>
-        <button onclick="location.href='Recherche.html'">Recherche</button>
-        <button onclick="location.href='RendezvousP.php'">Rendez-vous</button>
-        <button onclick="location.href='Votrecompte.php'">Votre compte</button>
+        <button onclick="location.href='accueilC.html'">Accueil</button>
+        <button onclick="location.href='indexC.php'">Tout Parcourir</button>
+        <button onclick="location.href='RechercheC.html'">Recherche</button>
+        <button onclick="location.href='RendezvousPC.php'">Rendez-vous</button>
+        <button onclick="location.href='VotrecompteC.php'">Votre compte</button>
     </nav>
-    <h1>Détails du Bien Immobilier</h1>
     <?php
     // Connexion à la base de données
     $conn = new mysqli('localhost', 'root', '', 'maison');
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Vérification si le formulaire a été soumis
+        $id = intval($_GET['id']);
+        // Mise à jour de l'état du bien immobilier
+        $sql_update = "UPDATE properties SET Etat = 'vendu' WHERE id = $id";
+        
+        if ($conn->query($sql_update) === TRUE) {
+            echo "<p class='felicitations'>Félicitations pour votre acquisition, Omnes Immobilier vous en remercie.</p>";
+        } else {
+            echo "<p style='color: red;'>Erreur lors de la mise à jour de l'état du bien immobilier.</p>";
+        }
     }
 
     // Récupération de l'ID depuis l'URL
@@ -41,7 +61,7 @@
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        echo "<h2>{$row['name']}</h2>
+        echo "<h1>{$row['name']}</h1>
               <p><strong>Type:</strong> {$row['type']}</p>
               <p><strong>Numéro:</strong> {$row['number']}</p>
               <p><strong>Ville:</strong> {$row['city']}</p>
@@ -64,14 +84,14 @@
         echo "<p><strong>Nombre de mètres carrés:</strong> {$row['square_meters']}</p>
               <p><strong>Informations Complémentaires:</strong> {$row['additional_info']}</p>";
 
-        // Lien vers la page de modification
-        echo "<a href='modifier_detail.php?id=$id'>Modifier</a><br>";
-
-        // Lien vers la page de suppression
-        echo "<a href='supprimer_detail.php?id=$id'>Supprimer</a><br>";
-
-        // Lien vers la page d'ajout
-        echo "<a href='ajouter_detail.php?id=$id'>Ajouter</a>";
+        // Afficher le bouton "Acheter" uniquement si le bien n'est pas vendu
+        if ($row['Etat'] != 'vendu') {
+            echo "<form action='' method='post'>
+                      <input type='submit' name='acheter' value='Acheter'>
+                  </form>";
+        } else {
+            echo "<p>Ce bien est déjà vendu.</p>";
+        }
     } else {
         echo "<p>Aucun détail trouvé pour ce bien immobilier.</p>";
     }
@@ -80,3 +100,4 @@
     ?>
 </body>
 </html>
+

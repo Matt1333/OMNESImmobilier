@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails du Bien Immobilier</title>
-   
     <link rel="stylesheet" href="stylesTout_parcourir.css">
     <link rel="stylesheet" href="styles_detail.css">
 </head>
@@ -13,13 +12,12 @@
         <img src="uploads/logo.png" alt="Logo Omnes Immobilier">
     </header>
     <nav>
-        <button onclick="location.href='accueil.html'">Accueil</button>
-        <button onclick="location.href='index.php'">Tout Parcourir</button>
-        <button onclick="location.href='Recherche.html'">Recherche</button>
-        <button onclick="location.href='RendezvousP.php'">Rendez-vous</button>
-        <button onclick="location.href='Votrecompte.php'">Votre compte</button>
+        <button onclick="location.href='accueilA.html'">Accueil</button>
+        <button onclick="location.href='indexA.php'">Tout Parcourir</button>
+        <button onclick="location.href='RechercheA.html'">Recherche</button>
+        <button onclick="location.href='RendezvousPA.php'">Rendez-vous</button>
+        <button onclick="location.href='VotrecompteA.php'">Votre compte</button>
     </nav>
-    <h1>Détails du Bien Immobilier</h1>
     <?php
     // Connexion à la base de données
     $conn = new mysqli('localhost', 'root', '', 'maison');
@@ -41,7 +39,7 @@
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        echo "<h2>{$row['name']}</h2>
+        echo "<h1>{$row['name']}</h1>
               <p><strong>Type:</strong> {$row['type']}</p>
               <p><strong>Numéro:</strong> {$row['number']}</p>
               <p><strong>Ville:</strong> {$row['city']}</p>
@@ -64,14 +62,10 @@
         echo "<p><strong>Nombre de mètres carrés:</strong> {$row['square_meters']}</p>
               <p><strong>Informations Complémentaires:</strong> {$row['additional_info']}</p>";
 
-        // Lien vers la page de modification
-        echo "<a href='modifier_detail.php?id=$id'>Modifier</a><br>";
-
-        // Lien vers la page de suppression
-        echo "<a href='supprimer_detail.php?id=$id'>Supprimer</a><br>";
-
-        // Lien vers la page d'ajout
-        echo "<a href='ajouter_detail.php?id=$id'>Ajouter</a>";
+        // Message si le bien est vendu
+        if ($row['Etat'] == 'vendu') {
+            echo "<p>Ce bien est déjà vendu.</p>";
+        }
     } else {
         echo "<p>Aucun détail trouvé pour ce bien immobilier.</p>";
     }
