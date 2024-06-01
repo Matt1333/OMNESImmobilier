@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche de Biens Immobiliers</title>
+    <link rel="stylesheet" href="stylesRecherche.css">
+    <link rel="stylesheet" href="stylesTout_parcourir.css">
+    <link rel="stylesheet" href="styles_detail.css">
+</head>
+<body>
+    <header>
+        <img src="uploads/logo.png" alt="Logo Omnes Immobilier">
+    </header>
+    <nav>
+        <button onclick="location.href='accueil.html'">Accueil</button>
+        <button onclick="location.href='index.php'">Tout Parcourir</button>
+        <button onclick="location.href='Recherche.html'">Recherche</button>
+        <button onclick="location.href='RendezvousP.php'">Rendez-vous</button>
+        <button onclick="location.href='Votrecompte.php'">Votre compte</button>
+    </nav>
+    <h1>Recherche de Biens Immobiliers</h1>
+    <form action="rechercher.php" method="GET">
+        <label for="searchType">Type de recherche :</label>
+        <select name="searchType" id="searchType" required>
+            <option value="number">Numéro de propriété</option>
+            <option value="city">Ville</option>
+            <option value="type">Type de propriété</option>
+        </select>
+        <br>
+        <label for="searchQuery">Votre recherche :</label>
+        <input type="text" id="searchQuery" name="searchQuery" required>
+        <br>
+        <button type="submit">Rechercher</button>
+    </form>
+</body>
+</html>
