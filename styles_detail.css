@@ -1,0 +1,89 @@
+/* stylesDetail.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    padding: 10px;
+}
+
+header img {
+    width: 150px;
+    height: auto;
+}
+
+nav {
+    background-color: #444;
+    padding: 10px;
+}
+
+nav button {
+    background-color: #666;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+nav button:hover {
+    background-color: #555;
+}
+
+h1 {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.property-details {
+    background-color: #fff;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.property-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.property-details th,
+.property-details td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.property-details th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+}
+
+.property-details td {
+    background-color: #fff;
+}
+
+.property-details img {
+    display: block;
+    margin: 10px auto;
+}
+
+.property-details a {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.property-details a:hover {
+    background-color: #0056b3;
+}
