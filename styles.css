@@ -1,0 +1,157 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #343a40;
+}
+
+header img {
+    height: 100px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: grey;
+    padding: 10px 0;
+}
+
+nav button {
+    margin: 0 10px;
+    padding: 15px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: black;
+    border: 2px solid black ;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+nav button:hover {
+    background-color: lightgrey;
+    border-color: black;
+}
+main {
+    padding: 20px;
+}
+
+.welcome p {
+    font-style: italic;
+    text-align: center;
+}
+
+.event, .carousel {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.carousel-container {
+    position: relative;
+    width: 800px;
+    max-width: 100%;
+    height: 533px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: flex;
+    width: calc(800px * 12);
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+    width: 800px;
+    height: 533px;
+    object-fit: cover;
+}
+
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.property, .agent {
+    border: 1px solid #ddd;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+.property img, .agent img {
+    max-width: 100%;
+    height: auto;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 1em;
+}
+
+.navbar-nav .nav-link {
+    color: #333;
+    font-size: 1.1em;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #555;
+}
+
+button {
+    margin: 0.5em 0;
+    padding: 0.5em 1em;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+a.text-white {
+    color: #fff;
+    text-decoration: none;
+}
+
+a.text-white:hover {
+    text-decoration: underline;
+}
